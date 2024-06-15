@@ -1,10 +1,4 @@
-# Original Description
-
-This is the readme for my evolution simulator, The Life Engine. 
-
-FOR FEATURE REQUESTS, USE THE DISCUSSIONS TAB. FOR BUG REPORTS, USE THE ISSUES TAB. :)
-
-# The Life Engine
+# The Life Engine (Original Description)
 [Play here!](https://thelifeengine.net/)
 
 The life engine is a cellular automaton designed to simulate the long term processes of biological evolution. It allows organisms to eat, reproduce, mutate, and adapt.
