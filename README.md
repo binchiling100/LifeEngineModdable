@@ -1,3 +1,5 @@
+# Original Description
+
 This is the readme for my evolution simulator, The Life Engine. 
 
 FOR FEATURE REQUESTS, USE THE DISCUSSIONS TAB. FOR BUG REPORTS, USE THE ISSUES TAB. :)
