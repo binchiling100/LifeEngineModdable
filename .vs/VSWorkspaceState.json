@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\dist",
+    "\\dist\\js",
+    "\\src",
+    "\\src\\Controllers",
+    "\\src\\Environments",
+    "\\src\\Grid",
+    "\\src\\Stats",
+    "\\src\\Stats\\Charts",
+    "\\src\\Utils"
+  ],
+  "SelectedNode": "\\src\\Grid",
+  "PreviewInSolutionExplorer": false
+}
