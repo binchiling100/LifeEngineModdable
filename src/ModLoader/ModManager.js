@@ -15,4 +15,4 @@ class ModManager {
     }
 }
 
-module.export = ModManager;
+module.exports = ModManager;

@@ -1,5 +1,4 @@
-const acorn = require('acorn');
-const fs = require('fs');
+
 class Loader {
     constructor(modsDir) {
         this.modsDir = modsDir;
@@ -8,3 +7,4 @@ class Loader {
     
     
 }
+module.exports = Loader;

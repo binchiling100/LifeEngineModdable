@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\dist",
-    "\\dist\\js",
     "\\src",
-    "\\src\\Controllers",
-    "\\src\\Environments",
-    "\\src\\Grid",
+    "\\src\\Organism",
+    "\\src\\Organism\\Cell",
+    "\\src\\Organism\\Cell\\BodyCells",
+    "\\src\\Organism\\Perception",
+    "\\src\\Rendering",
     "\\src\\Stats",
     "\\src\\Stats\\Charts",
     "\\src\\Utils"
   ],
-  "SelectedNode": "\\src\\Grid",
+  "SelectedNode": "\\src\\Organism\\Cell\\GridCell.js",
   "PreviewInSolutionExplorer": false
 }

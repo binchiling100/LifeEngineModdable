@@ -11,8 +11,9 @@ const SerializeHelper = require('../Utils/SerializeHelper');
 const Species = require('../Stats/Species');
 
 class WorldEnvironment extends Environment{
-    constructor(cell_size) {
+    constructor(cell_size, cellManager) {
         super();
+        this.cellManager = cellManager;
         this.renderer = new Renderer('env-canvas', 'env', cell_size);
         this.controller = new EnvironmentController(this, this.renderer.canvas);
         this.num_rows = Math.ceil(this.renderer.height / cell_size);

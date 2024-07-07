@@ -76,8 +76,10 @@ class Eye extends CellState {
 
 class Custom extends CellState {
     constructor() {
-        super('custom');
+        
+        super('custom')
     }
+    
 }
 
 const CellStates = {

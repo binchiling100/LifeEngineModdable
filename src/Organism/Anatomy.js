@@ -25,8 +25,9 @@ class Anatomy {
         return true;
     }
 
-    addDefaultCell(state, c, r) {
-        var new_cell = BodyCellFactory.createDefault(this.owner, state, c, r);
+    addDefaultCell(state, c, r, ccellID) {
+        ccellID = ccellID || null;
+        var new_cell = BodyCellFactory.createDefault(this.owner, state, c, r, ccellID);
         this.cells.push(new_cell);
         return new_cell;
     }

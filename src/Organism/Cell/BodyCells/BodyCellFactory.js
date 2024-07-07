@@ -6,6 +6,9 @@ const ArmorCell = require("./ArmorCell");
 const EyeCell = require("./EyeCell");
 const CellStates = require("../CellStates");
 const Custom = require("./CustomCell");
+const Environment = require("../../../Environments/WorldEnvironment");
+const CustomCellManager = require("../../../ModLoader/Organism/CustomCellManager");
+const CellHolder = require("../../../ModLoader/Organism/CellHolder");
 
 const BodyCellFactory = {
     init: function() {
@@ -26,41 +29,51 @@ const BodyCellFactory = {
         return cell;
     },
 
-    createRandom: function (org, state, loc_col, loc_row, behaviour, initRandomFunc, initDefaultFunc) {
-        behaviour = behaviour || null;
-        initRandomFunc = initRandomFunc || null;
-        initDefaultFunc = initDefaultFunc || null;
-        function nothing() {
-
-        }
-        var cell;
+    createRandom: function (org, state, loc_col, loc_row) {
         
-        if (state.name != 'custom') {
+        env = org.env;
+        let cellManager = org.env.cellManager;
+        
+        var cell;
+
+        if (state.name != Custom) {
             cell = new this.type_map[state.name](org, loc_col, loc_row);
         }
         else {
+            let cellHolder = cellManager.getRandomCustomCell();
+            if (cellManager.arePresent()) {
+                cell = new Custom(org, loc_col, loc_row, cellHolder.behaviour, cellHolder.initRandomFunc, cellHolder.initDefaultFunc, cellHolder.name);
+            }
+            else {
+                while (state.name == Custom) {
+                    state.name = CellStates.getRandomName();
 
-            cell = new this.type_map[state.name](org, loc_col, loc_row, nothing, nothing, nothing);
+                }
+                cell = new this.type_map[state.name](org, loc_col, loc_row);
+            }
+
         }
-        if (state.name == 'custom') {
-            if (behaviour) {
-                cell.behaviour = behaviour;
-            }
-            if (initDefaultFunc) {
-                cell.initDefaultFunc = initDefaultFunc;
-            }
-            if (initRandomFunc) {
-                cell.initRandomFunc = initRandomFunc;
-            }
+        if (state.name == Custom) {
+            cellManager: CellHolder = org.owner.env.custom.cellManager.getRandomCustomCell();
+            cell.behaviour = cellManager.behaviour;
+            cell.initDefaultFunc = cellManager.initDefaultFunc;
+            cell.initRandomFunc = cellManager.initRandomFunc;
+            cell.cname = cellManager.name;
         }
+        
+
         
         cell.initRandom();
         return cell;
     },
 
-    createDefault: function(org, state, loc_col, loc_row) {
+    createDefault: function (org, state, loc_col, loc_row, customCellID) {
+        customCellID = customCellID || null;
         var cell = new this.type_map[state.name](org, loc_col, loc_row);
         cell.initDefault();
+        if (state == Custom) {
+
+        }
         return cell;
     },
 }

@@ -1,5 +1,7 @@
 // const CellTypes = require("../Organism/Cell/CellTypes");
+const Custom = require("../Organism/Cell/BodyCells/CustomCell");
 const CellStates = require("../Organism/Cell/CellStates");
+const Cell = require("../Organism/Cell/GridCell");
 const Directions = require("../Organism/Directions");
 
 // Renderer controls access to a canvas. There is one renderer for each canvas
@@ -48,7 +50,14 @@ class Renderer {
     }
 
     renderCell(cell) {
-        cell.state.render(this.ctx, cell, this.cell_size);
+        //console.log(cell.constructor.name);
+        if (cell.state.name != 'custom') {
+            cell.state.render(this.ctx, cell, this.cell_size);
+        }
+        else {
+            this.ctx.fillStyle = cell.owner.env.cellManager.getCellByName(cell.cname).color;
+            this.ctx.fillRect(cell.x, cell.y, this.cell_size, this.cell_size);
+        }
     }
 
     renderOrganism(org) {

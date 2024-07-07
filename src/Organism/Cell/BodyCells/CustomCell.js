@@ -2,8 +2,9 @@ const CellStates = require("../CellStates");
 const BodyCell = require("./BodyCell");
 
 class CustomCell extends BodyCell {
-    constructor(org, loc_col, loc_row, behaviour, initRandomFunc, initDefaultFunc) {
+    constructor(org, loc_col, loc_row, behaviour, initRandomFunc, initDefaultFunc, cname) {
         super(CellStates.custom, org, loc_col, loc_row);
+        this.cname = cname;
         this.behaviour = behaviour;
         this.initDefaultFunc = initDefaultFunc;
         this.initRandomFunc = initRandomFunc;
